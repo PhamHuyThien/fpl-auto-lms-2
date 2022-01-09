@@ -3,13 +3,17 @@ package com.thiendz.tool.fplautolms.views;
 
 import com.thiendz.tool.fplautolms.models.AnswerBase;
 import com.thiendz.tool.fplautolms.models.Quiz;
+import com.thiendz.tool.fplautolms.utils.Messages;
 import com.thiendz.tool.fplautolms.utils.MsgBoxUtils;
+import lombok.Data;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+@Data
 public class AnswerView extends javax.swing.JFrame {
 
     public static void main(String[] args) {
@@ -64,15 +68,15 @@ public class AnswerView extends javax.swing.JFrame {
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
+                formWindowClosing();
             }
         });
 
-        lbQuestionNum.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Câu hỏi số ... :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Consolas", 1, 24))); // NOI18N
+        lbQuestionNum.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Câu hỏi số ... :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Consolas", Font.BOLD, 24))); // NOI18N
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Câu hỏi:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Consolas", 0, 14))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Câu hỏi:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Consolas", Font.PLAIN, 14))); // NOI18N
 
-        lbQuestion.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        lbQuestion.setFont(new java.awt.Font("Consolas", Font.PLAIN, 12)); // NOI18N
         lbQuestion.setText("<html>Không có dữ liệu...</html>");
         lbQuestion.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lbQuestion.setAutoscrolls(true);
@@ -93,9 +97,9 @@ public class AnswerView extends javax.swing.JFrame {
                                 .addContainerGap())
         );
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Đáp án:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Consolas", 0, 14))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Đáp án:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Consolas", Font.PLAIN, 14))); // NOI18N
 
-        lbBestSolution.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        lbBestSolution.setFont(new java.awt.Font("Consolas", Font.PLAIN, 12)); // NOI18N
         lbBestSolution.setText("<html>Không có dữ liệu</html>");
         lbBestSolution.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
@@ -115,33 +119,25 @@ public class AnswerView extends javax.swing.JFrame {
                                 .addContainerGap())
         );
 
-        btnPrev.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        btnPrev.setFont(new java.awt.Font("Consolas", Font.PLAIN, 12)); // NOI18N
         btnPrev.setText("Trở lại");
-        btnPrev.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrevActionPerformed(evt);
-            }
-        });
+        btnPrev.addActionListener(this::btnPrevActionPerformed);
 
-        btnNext.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        btnNext.setFont(new java.awt.Font("Consolas", Font.PLAIN, 12)); // NOI18N
         btnNext.setText("Tiếp theo");
-        btnNext.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNextActionPerformed(evt);
-            }
-        });
+        btnNext.addActionListener(this::btnNextActionPerformed);
 
-        tfPageNum.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        tfPageNum.setFont(new java.awt.Font("Consolas", Font.PLAIN, 12)); // NOI18N
         tfPageNum.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tfPageNum.setText("1");
         tfPageNum.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tfPageNumMouseClicked(evt);
+                tfPageNumMouseClicked();
             }
         });
         tfPageNum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tfPageNumKeyReleased(evt);
+                tfPageNumKeyReleased();
             }
         });
 
@@ -159,7 +155,7 @@ public class AnswerView extends javax.swing.JFrame {
                                 .addComponent(btnNext))
         );
 
-        lbQuestionNumLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[]{btnNext, btnPrev, tfPageNum});
+        lbQuestionNumLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, btnNext, btnPrev, tfPageNum);
 
         lbQuestionNumLayout.setVerticalGroup(
                 lbQuestionNumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,18 +171,18 @@ public class AnswerView extends javax.swing.JFrame {
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        lbQuestionNumLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[]{btnNext, btnPrev, tfPageNum});
+        lbQuestionNumLayout.linkSize(javax.swing.SwingConstants.VERTICAL, btnNext, btnPrev, tfPageNum);
 
-        lbQuestionNumLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[]{jPanel5, jPanel7});
+        lbQuestionNumLayout.linkSize(javax.swing.SwingConstants.VERTICAL, jPanel5, jPanel7);
 
         jPanel9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        lbTitle.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        lbTitle.setFont(new java.awt.Font("Consolas", Font.BOLD, 36)); // NOI18N
         lbTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTitle.setText("< ... />");
 
-        jLabel2.setFont(new java.awt.Font("Consolas", 0, 10)); // NOI18N
-        jLabel2.setText("ThienDepZaii is the best! =))");
+        jLabel2.setFont(new java.awt.Font("Consolas", Font.PLAIN, 10)); // NOI18N
+        jLabel2.setText(Messages.THIEN_DZ_IS_THE_BEST);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -232,28 +228,28 @@ public class AnswerView extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {
         onclickNext();
-    }//GEN-LAST:event_btnNextActionPerformed
+    }
 
-    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
+    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {
         onclickPrev();
-    }//GEN-LAST:event_btnPrevActionPerformed
+    }
 
-    private void tfPageNumKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfPageNumKeyReleased
+    private void tfPageNumKeyReleased() {
         actionPageNum();
-    }//GEN-LAST:event_tfPageNumKeyReleased
+    }
 
-    private void tfPageNumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfPageNumMouseClicked
+    private void tfPageNumMouseClicked() {
         tfPageNum.selectAll();
-    }//GEN-LAST:event_tfPageNumMouseClicked
+    }
 
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+    private void formWindowClosing() {
         setVisible(false);
         dashboardView.setVisible(true);
-    }//GEN-LAST:event_formWindowClosing
+    }
 
     private void actionPageNum() {
         int id = getPageText();
@@ -300,9 +296,6 @@ public class AnswerView extends javax.swing.JFrame {
 
     public void setQuiz(Quiz quiz) {
         this.quiz = quiz;
-//        for (int i = 0; i < quiz.getAnswerBases().length; i++) {
-//            System.out.println(quiz.getAnswerBases()[i].toString());
-//        }
     }
 
     public void setDashboardView(DashboardView dashboardView) {
@@ -317,7 +310,7 @@ public class AnswerView extends javax.swing.JFrame {
         if (this.quiz == null) {
             return;
         }
-        setTitle(this.quiz.getName() + " - ThienDepZaii");
+        setTitle(this.quiz.getName() + " - "+Messages.APP_NAME);
         lbTitle.setText("<" + this.quiz.getName() + "/>");
         if (id > -1 && id < getSizAnswerBase()) {
             setPageText(id + 1);
@@ -341,7 +334,7 @@ public class AnswerView extends javax.swing.JFrame {
     }
 
     private void updateQuestionNum(String text) {
-        lbQuestionNum.setBorder(javax.swing.BorderFactory.createTitledBorder(null, text, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Consolas", 1, 24)));
+        lbQuestionNum.setBorder(javax.swing.BorderFactory.createTitledBorder(null, text, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Consolas", Font.BOLD, 24)));
     }
 
     private int getSizAnswerBase() {
