@@ -3,6 +3,8 @@ package com.thiendz.tool.fplautolms.selenium.impl;
 import com.thiendz.tool.fplautolms.models.User;
 import com.thiendz.tool.fplautolms.selenium.interf.LmsDriver;
 import com.thiendz.tool.fplautolms.utils.OsUtils;
+import com.thiendz.tool.fplautolms.utils.consts.Environments;
+import com.thiendz.tool.fplautolms.utils.consts.Messages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -24,22 +26,30 @@ public class LmsChromeDriver implements LmsDriver {
 
     @Override
     public void init() throws FileNotFoundException {
-        if (!checkDriverExists()) {
-            throw new FileNotFoundException("ChromeDriver not exist!");
-        }
+        if (!checkDriverExists())
+            throw new FileNotFoundException(Messages.DRIVER_NOT_INSTALL);
+
         System.setProperty("webdriver.chrome.driver", PATH_DRIVER);
+
         ChromeOptions chromeOptions = new ChromeOptions();
+        if (!Environments.SHOW_IMAGE) {
+            Map<String, Object> prefs = new HashMap<>();
+            prefs.put("profile.managed_default_content_settings.images", 2);
+            chromeOptions.setExperimentalOption("prefs", prefs);
+        }
+        if (Environments.FULL_SCREEN) {
+            chromeOptions.addArguments("start-maximized");
+        }
+        if (!Environments.ENABLE_AUTOMATION) {
+            chromeOptions.setExperimentalOption("useAutomationExtension", false);
+            chromeOptions.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
+        }
 
-        Map<String, Object> prefs = new HashMap<>();
-        prefs.put("profile.managed_default_content_settings.images", 2);
-        chromeOptions.setExperimentalOption("prefs", prefs);
-
-        chromeOptions.setExperimentalOption("useAutomationExtension", false);
-        chromeOptions.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
         chromeDriver = new ChromeDriver(chromeOptions);
 
-        chromeDriver.manage().window().setSize(new Dimension(700, 500));
-//        chromeDriver.manage().window().setPosition(new Point(-32000, -32000));
+        if (!Environments.SHOW_BROWSER) {
+            chromeDriver.manage().window().setPosition(new Point(-32000, -32000));
+        }
 
         chromeDriver.get(user.getServer().getUrlServer());
 

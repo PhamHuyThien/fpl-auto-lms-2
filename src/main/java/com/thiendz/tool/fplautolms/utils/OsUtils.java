@@ -28,6 +28,22 @@ public class OsUtils {
                 case "--disable-analysis":
                     Environments.DISABLE_ANALYSIS = true;
                     break;
+                case "-sb":
+                case "--show-browser":
+                    Environments.SHOW_BROWSER = true;
+                    break;
+                case "-fsc":
+                case "--full-screen":
+                    Environments.FULL_SCREEN = true;
+                    break;
+                case "-si":
+                case "--show-image":
+                    Environments.SHOW_IMAGE = true;
+                    break;
+                case "-ea":
+                case "--enable-automation":
+                    Environments.ENABLE_AUTOMATION = true;
+                    break;
                 case "-s":
                 case "--save-log":
                     break;
