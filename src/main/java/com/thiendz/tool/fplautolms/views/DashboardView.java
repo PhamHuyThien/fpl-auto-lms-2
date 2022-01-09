@@ -66,7 +66,7 @@ public class DashboardView extends javax.swing.JFrame {
         lbTitle.setFont(new java.awt.Font("Consolas", Font.BOLD, 36)); // NOI18N
         lbTitle.setForeground(new java.awt.Color(0, 204, 204));
         lbTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbTitle.setText("FPL@utoLMS");
+        lbTitle.setText(Messages.APP_NAME);
 
         lbSlogan.setFont(new java.awt.Font("Consolas", Font.BOLD, 14)); // NOI18N
         lbSlogan.setForeground(new java.awt.Color(0, 51, 255));
@@ -147,16 +147,16 @@ public class DashboardView extends javax.swing.JFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lbRole.setFont(new java.awt.Font("Consolas", Font.PLAIN, 12)); // NOI18N
-        lbRole.setText("Quyền: ..............");
+        lbRole.setText(Messages.ROLE + "..............");
 
         lbGender.setFont(new java.awt.Font("Consolas", Font.PLAIN, 12)); // NOI18N
-        lbGender.setText("Giới tính: ..........");
+        lbGender.setText(Messages.GENDER + "..........");
 
         lbEmail.setFont(new java.awt.Font("Consolas", Font.PLAIN, 12)); // NOI18N
-        lbEmail.setText("Email: ..............");
+        lbEmail.setText(Messages.EMAIL + "..............");
 
         lbHello.setFont(new java.awt.Font("Consolas", Font.PLAIN, 12)); // NOI18N
-        lbHello.setText("Chào:................");
+        lbHello.setText(Messages.HELLO + ":................");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);

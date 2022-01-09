@@ -1,4 +1,4 @@
-package com.thiendz.tool.fplautolms.utils;
+package com.thiendz.tool.fplautolms.utils.consts;
 
 
 public class Environments {

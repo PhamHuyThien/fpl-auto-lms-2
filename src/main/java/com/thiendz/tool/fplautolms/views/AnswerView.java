@@ -3,8 +3,8 @@ package com.thiendz.tool.fplautolms.views;
 
 import com.thiendz.tool.fplautolms.models.AnswerBase;
 import com.thiendz.tool.fplautolms.models.Quiz;
-import com.thiendz.tool.fplautolms.utils.Messages;
 import com.thiendz.tool.fplautolms.utils.MsgBoxUtils;
+import com.thiendz.tool.fplautolms.utils.consts.Messages;
 import lombok.Data;
 
 import java.awt.*;

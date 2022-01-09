@@ -3,6 +3,7 @@ package com.thiendz.tool.fplautolms.controllers;
 import com.thiendz.tool.fplautolms.models.User;
 import com.thiendz.tool.fplautolms.models.Server;
 import com.thiendz.tool.fplautolms.services.LoginService;
+import com.thiendz.tool.fplautolms.utils.consts.Messages;
 import com.thiendz.tool.fplautolms.utils.enums.ServerName;
 import com.thiendz.tool.fplautolms.utils.except.InputException;
 import com.thiendz.tool.fplautolms.utils.except.LmsException;
@@ -34,20 +35,19 @@ public class LoginController implements Runnable {
         try {
             checkFormLogin();
             dashboardView.setEnabledAll(false);
-            dashboardView.setProcess("Login...");
+            dashboardView.setProcess(Messages.WAIT_LOGIN);
             login();
             updateDashboard();
             dashboardView.getTfRefIdCourse().setEnabled(true);
             dashboardView.getBtnGetQuiz().setEnabled(true);
             log.info(user.toString());
-        } catch (LmsException e) {
+        } catch (IOException | LmsException e) {
             log.error(e.toString());
-            dashboardView.setProcess("Cookie sai hoặc hết hạn.");
-        } catch (IOException e) {
-            log.error(e.toString());
-            dashboardView.setProcess("Kết nối tới máy chủ thất bại.");
+            reset();
+            dashboardView.setProcess(Messages.LOGIN_FAIL);
         } catch (InputException e) {
             log.error(e.toString());
+            reset();
             dashboardView.setProcess(e.toString());
         }
         dashboardView.getTfCookie().setEnabled(true);
@@ -68,15 +68,22 @@ public class LoginController implements Runnable {
 
     private void checkFormLogin() throws InputException {
         if (dashboardView.getTfCookie().getText().trim().equals(""))
-            throw new InputException("Cookie không được để trống!");
+            throw new InputException(Messages.COOKIE_NOT_EMPTY);
+    }
+
+    private void reset() {
+        dashboardView.getLbHello().setText(Messages.HELLO);
+        dashboardView.getLbEmail().setText(Messages.ID);
+        dashboardView.getLbGender().setText(Messages.GENDER);
+        dashboardView.getLbRole().setText(Messages.ROLE);
     }
 
     private void updateDashboard() {
         dashboardView.setUser(user);
-        dashboardView.getLbHello().setText("Hello: " + user.getName());
-        dashboardView.getLbEmail().setText("ID: " + user.getId());
-        dashboardView.getLbGender().setText("Gender: " + user.getSex());
-        dashboardView.getLbRole().setText("Role: " + user.getRole());
-        dashboardView.setProcess("Login success!");
+        dashboardView.getLbHello().setText(Messages.HELLO + user.getName());
+        dashboardView.getLbEmail().setText(Messages.ID + user.getId());
+        dashboardView.getLbGender().setText(Messages.GENDER + user.getSex());
+        dashboardView.getLbRole().setText(Messages.ROLE + user.getRole());
+        dashboardView.setProcess(Messages.LOGIN_SUCCESS);
     }
 }
