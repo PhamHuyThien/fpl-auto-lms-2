@@ -4,13 +4,10 @@ import com.thiendz.tool.fplautolms.models.AnswerBase;
 import com.thiendz.tool.fplautolms.models.Course;
 import com.thiendz.tool.fplautolms.models.Quiz;
 import com.thiendz.tool.fplautolms.models.User;
-import com.thiendz.tool.fplautolms.selenium.impl.LmsChromeDriver;
-import com.thiendz.tool.fplautolms.selenium.interf.LmsDriver;
-import com.thiendz.tool.fplautolms.services.AnswerBaseService;
 import com.thiendz.tool.fplautolms.services.SeleniumSolutionService;
-import com.thiendz.tool.fplautolms.services.SeleniumStartQuizService;
 import com.thiendz.tool.fplautolms.utils.MsgBoxUtils;
 import com.thiendz.tool.fplautolms.utils.ThreadUtils;
+import com.thiendz.tool.fplautolms.utils.consts.Messages;
 import com.thiendz.tool.fplautolms.utils.except.InputException;
 import com.thiendz.tool.fplautolms.utils.except.LmsException;
 import com.thiendz.tool.fplautolms.views.DashboardView;
@@ -55,7 +52,7 @@ public class SolutionController implements Runnable {
             solution();
         } catch (IOException e) {
             log.error(e.toString());
-            dashboardView.setProcess("Kết nối tới máy chủ thất bại.");
+            dashboardView.setProcess(Messages.CONNECT_TO_SERVER_ERROR);
         } catch (Exception e) {
             log.error(e.toString());
             dashboardView.setProcess(e.toString());
@@ -64,20 +61,20 @@ public class SolutionController implements Runnable {
     }
 
     private void solution() throws LmsException {
-        dashboardView.setProcess("Đang giải bài ...");
+        dashboardView.setProcess(Messages.WAIT_SOLUTION);
         AtomicInteger process = new AtomicInteger();
         SeleniumSolutionService seleniumSolutionService = new SeleniumSolutionService(dashboardView.getLmsDriver().getWebDriver(), user, quiz);
         seleniumSolutionService.setSolutionCallback(id -> {
             process.set(id);
-            dashboardView.setProcess("Đang giải " + id + "/" + quiz.getAnswerBaseList().size() + " câu hỏi...");
+            dashboardView.setProcess(String.format(Messages.PROCESS_SOLUTION, id, quiz.getAnswerBaseList().size()));
         });
         seleniumSolutionService.solution();
         if (process.get() >= 0) {
-            dashboardView.setProcess("Submitting...");
+            dashboardView.setProcess(Messages.SUBMITTING);
             ThreadUtils.sleep(1000);
         }
-        dashboardView.setProcess("Solving " + process.get() + "/" + quiz.getAnswerBaseList().size() + " question done.");
-        MsgBoxUtils.alertInf(dashboardView, "Thành công!");
+        dashboardView.setProcess(String.format(Messages.PROCESS_SOLUTION, process.get(), quiz.getAnswerBaseList().size()));
+        MsgBoxUtils.alertInf(dashboardView, Messages.SUCCESS);
     }
 
     private void startQuiz() throws Exception {
@@ -89,11 +86,11 @@ public class SolutionController implements Runnable {
 
     private void checkComboBoxQuiz() throws InputException {
         if (dashboardView.getCbbQuiz().getSelectedIndex() == 0)
-            throw new InputException("Bạn phải chọn 1 quiz!");
+            throw new InputException(Messages.YOU_MUST_CHOOSE_ONE_QUIZ);
 
         String text = Objects.requireNonNull(dashboardView.getCbbQuiz().getSelectedItem()).toString();
-        if (text.contains("(NOT SUPPORT)"))
-            throw new InputException("Quiz này không hỗ trợ!");
+        if (text.contains(Messages.NOT_SUPPORT))
+            throw new InputException(Messages.QUIZ_NOT_SUPPORT);
     }
 
 }

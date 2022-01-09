@@ -24,6 +24,10 @@ public class Messages {
     public static final String DRIVER_NOT_INSTALL = "Driver chưa được cài đặt.";
     public static final String DRIVER_DOWNLOADING = "Bắt đầu tải về driver...";
 
+    public static final String WAIT_SOLUTION = "Đang giải bài...";
+    public static final String PROCESS_SOLUTION = "Đang giải %d/%d câu hỏi...";
+    public static final String SUBMITTING = "Chờ hoàn thành...";
+
     public static final String HELLO = "Chào: ";
     public static final String ID = "Id: ";
     public static final String GENDER = "Giới tính: ";
