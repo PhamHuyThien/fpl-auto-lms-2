@@ -19,7 +19,7 @@ Jar FPL@utoLMS có sẵn trong [releases github](https://github.com/PhamHuyThien
 ### DriverDL library
 
 Để có thể tự động tải về driver selenium phù hợp với thiết bị của bạn, chúng tôi đã sử dụng một thư viện tự phát triển
-có tên [driver-dl]().
+có tên [driver-dl](https://github.com/PhamHuyThien/driver-dl).
 
 ```xml
 
@@ -32,10 +32,10 @@ có tên [driver-dl]().
 
 ### Danh sách args debug selenium
 
-Hiện thị trình duyệt: `-sb hoặc --show-browser`  
-Bật full màn hình trình duyệt: `-fsc hoặc --full-screen`  
-Bật hiển thị hình ảnh: `-si hoặc --show-image`  
-Bật chế độ automation driver: `-ea hoặc --enable-automation`  
+Hiện thị trình duyệt: `-sb` hoặc `--show-browser`  
+Bật full màn hình trình duyệt: `-fsc` hoặc `--full-screen`  
+Bật hiển thị hình ảnh: `-si` hoặc `--show-image`  
+Bật chế độ automation driver: `-ea` hoặc `--enable-automation`  
 Ví dụ:
 
 ```cmd
