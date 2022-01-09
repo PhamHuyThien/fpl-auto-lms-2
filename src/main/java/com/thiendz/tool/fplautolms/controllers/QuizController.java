@@ -6,7 +6,7 @@ import com.thiendz.tool.fplautolms.models.Course;
 import com.thiendz.tool.fplautolms.services.CourseService;
 import com.thiendz.tool.fplautolms.services.QuizService;
 import com.thiendz.tool.fplautolms.utils.LmsUtils;
-import com.thiendz.tool.fplautolms.utils.MsgBoxUtils;
+import com.thiendz.tool.fplautolms.utils.consts.Messages;
 import com.thiendz.tool.fplautolms.utils.except.InputException;
 import com.thiendz.tool.fplautolms.utils.except.LmsException;
 import com.thiendz.tool.fplautolms.views.DashboardView;
@@ -34,24 +34,26 @@ public class QuizController implements Runnable {
     @Override
     public void run() {
         try {
-            checkFormGetQuiz();
             dashboardView.setEnabledAll(false);
-            dashboardView.setProcess("Get list quiz ...");
+            checkFormGetQuiz();
+            dashboardView.setProcess(Messages.WAIT_GET_LIST_QUIZ);
             getCourse();
             getQuiz();
             updateDashboard();
             user.setCourse(course);
-        } catch (LmsException e) {
+            dashboardView.setEnabledAll(true);
+        } catch (LmsException | InputException e) {
             log.error(e.toString());
             dashboardView.setProcess(e.toString());
         } catch (IOException e) {
             log.error(e.toString());
-            dashboardView.setProcess("Không thể request tới server.");
-        } catch (InputException e) {
-            log.error(e.toString());
-            dashboardView.setProcess(e.toString());
+            dashboardView.setProcess(Messages.CONNECT_TO_SERVER_ERROR);
         }
-        dashboardView.setEnabledAll(true);
+        dashboardView.getTfCookie().setEnabled(true);
+        dashboardView.getCbbServer().setEnabled(true);
+        dashboardView.getBtnLogin().setEnabled(true);
+        dashboardView.getTfRefIdCourse().setEnabled(true);
+        dashboardView.getBtnGetQuiz().setEnabled(true);
     }
 
     private void getQuiz() throws LmsException, IOException {
@@ -61,7 +63,7 @@ public class QuizController implements Runnable {
             course.setQuizList(quizService.getQuizList());
         } catch (LmsException e) {
             log.error(e.toString());
-            throw new LmsException("RefId không hợp lệ");
+            throw new LmsException(Messages.LINK_REF_ID_WRONG_FORMAT);
         }
     }
 
@@ -75,17 +77,17 @@ public class QuizController implements Runnable {
         String refIdStr = dashboardView.getTfRefIdCourse().getText().trim();
         int id = LmsUtils.parseRefId(refIdStr);
         if (id == -1)
-            throw new InputException("RefId không hợp lệ!");
+            throw new InputException(Messages.LINK_REF_ID_WRONG_FORMAT);
         refId = id;
     }
 
     private void updateDashboard() {
         dashboardView.getCbbQuiz().removeAllItems();
-        dashboardView.getCbbQuiz().addItem("Select quiz...");
+        dashboardView.getCbbQuiz().addItem(Messages.SELECT_QUIZ);
         for (Quiz quiz : course.getQuizList()) {
-            String isSupport = quiz.isAutomationSupport() ? "" : "(NOT SUPPORT)";
+            String isSupport = quiz.isAutomationSupport() ? "" : Messages.NOT_SUPPORT;
             dashboardView.getCbbQuiz().addItem(quiz.getName() + " " + isSupport);
         }
-        dashboardView.setProcess("Get list quiz done.");
+        dashboardView.setProcess(Messages.GET_LIST_QUIZ_SUCCESS);
     }
 }

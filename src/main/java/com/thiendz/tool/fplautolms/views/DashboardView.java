@@ -202,7 +202,7 @@ public class DashboardView extends javax.swing.JFrame {
         btnGetQuiz.addActionListener(this::btnGetQuizActionPerformed);
 
         cbbQuiz.setFont(new java.awt.Font("Consolas", Font.PLAIN, 12)); // NOI18N
-        cbbQuiz.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Select Quiz....", " "}));
+        cbbQuiz.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{Messages.SELECT_QUIZ}));
         cbbQuiz.setEnabled(false);
 
         btnView.setFont(new java.awt.Font("Consolas", Font.PLAIN, 12)); // NOI18N
