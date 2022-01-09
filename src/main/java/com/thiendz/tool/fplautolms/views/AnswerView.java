@@ -40,6 +40,7 @@ public class AnswerView extends javax.swing.JFrame {
     public AnswerView() {
         initComponents();
         setLocationRelativeTo(null);
+        setAlwaysOnTop(true);
     }
 
     private void initComponents() {

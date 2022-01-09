@@ -31,6 +31,9 @@ public class Messages {
     public static final String WAIT_SOLUTION = "Đang giải bài...";
     public static final String PROCESS_SOLUTION = "Đang giải %d/%d câu hỏi...";
 
+    public static final String TOOL_MAINTAIN = "Tool đang được bảo trì, quay lại sau nhé!";
+    public static final String VERSION_OLD = "FPLAutoLMS v%s đã lỗi thời!\nĐã có phiên bản v%s!\nTruy cập %s để tải bản mới nhất!";
+
     public static final String HELLO = "Chào: ";
     public static final String ID = "Id: ";
     public static final String GENDER = "Giới tính: ";

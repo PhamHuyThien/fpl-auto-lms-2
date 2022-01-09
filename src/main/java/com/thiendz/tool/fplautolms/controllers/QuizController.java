@@ -61,6 +61,7 @@ public class QuizController implements Runnable {
             QuizService quizService = new QuizService(user, course);
             quizService.start();
             course.setQuizList(quizService.getQuizList());
+            quizService.getQuizList().forEach(quiz -> log.info(quiz.toString()));
         } catch (LmsException e) {
             log.error(e.toString());
             throw new LmsException(Messages.LINK_REF_ID_WRONG_FORMAT);

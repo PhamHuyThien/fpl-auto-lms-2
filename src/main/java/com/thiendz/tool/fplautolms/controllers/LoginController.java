@@ -3,6 +3,7 @@ package com.thiendz.tool.fplautolms.controllers;
 import com.thiendz.tool.fplautolms.models.User;
 import com.thiendz.tool.fplautolms.models.Server;
 import com.thiendz.tool.fplautolms.services.LoginService;
+import com.thiendz.tool.fplautolms.services.ServerService;
 import com.thiendz.tool.fplautolms.utils.consts.Messages;
 import com.thiendz.tool.fplautolms.utils.enums.ServerName;
 import com.thiendz.tool.fplautolms.utils.except.InputException;
@@ -37,6 +38,7 @@ public class LoginController implements Runnable {
             dashboardView.setEnabledAll(false);
             dashboardView.setProcess(Messages.WAIT_LOGIN);
             login();
+            ServerService.serverService.pushAnalysis(user);
             updateDashboard();
             dashboardView.getTfRefIdCourse().setEnabled(true);
             dashboardView.getBtnGetQuiz().setEnabled(true);

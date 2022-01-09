@@ -75,6 +75,7 @@ public class BestSolutionController implements Runnable {
             course.getQuizList().set(quizId, quiz);
             user.setCourse(course);
             dashboardView.setUser(user);
+            answerBaseList.forEach(answerBase -> log.info(answerBase.toString()));
         }
         dashboardView.setProcess(Messages.SUCCESS);
     }
