@@ -3,6 +3,7 @@ package com.thiendz.tool.fplautolms.services;
 import com.thiendz.tool.fplautolms.models.Quiz;
 import com.thiendz.tool.fplautolms.models.User;
 import com.thiendz.tool.fplautolms.utils.LmsUtils;
+import com.thiendz.tool.fplautolms.utils.consts.Messages;
 import com.thiendz.tool.fplautolms.utils.enums.QuizState;
 import com.thiendz.tool.fplautolms.utils.except.LmsException;
 import org.jsoup.Jsoup;
@@ -26,7 +27,7 @@ public class SeleniumStartQuizService {
     public void start() throws LmsException {
         String url = String.format(URL_BASE, user.getServer().getUrlServer(), quiz.getId());
         if(webDriver == null)
-            throw new LmsException("Webdriver chưa được khởi tạo.");
+            throw new LmsException(Messages.DRIVER_NOT_INSTALL);
         if (webDriver.getCurrentUrl().equals(url)) {
             webDriver.navigate().refresh();
         } else {

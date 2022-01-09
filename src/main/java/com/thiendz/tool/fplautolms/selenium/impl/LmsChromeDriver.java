@@ -3,7 +3,6 @@ package com.thiendz.tool.fplautolms.selenium.impl;
 import com.thiendz.tool.fplautolms.models.User;
 import com.thiendz.tool.fplautolms.selenium.interf.LmsDriver;
 import com.thiendz.tool.fplautolms.utils.OsUtils;
-import com.thiendz.tool.fplautolms.utils.except.LmsException;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;

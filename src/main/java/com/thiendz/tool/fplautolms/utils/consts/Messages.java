@@ -23,10 +23,13 @@ public class Messages {
     public static final String DRIVER_NOT_INSTALL_HOW_TO_INSTALL = "Hiện tại bạn chưa cài đặt driver.\nBạn muốn tự động cài driver chứ?";
     public static final String DRIVER_NOT_INSTALL = "Driver chưa được cài đặt.";
     public static final String DRIVER_DOWNLOADING = "Bắt đầu tải về driver...";
+    public static final String QUIZ_FINISH = "Quiz này đã làm và không còn khả năng làm lại!";
+    public static final String QUIZ_SOLUTION = "Quiz này bạn đã làm rồi!\nNếu muốn làm lại, hãy sử dụng chức năng view Solution";
+    public static final String QUIZ_NOT_START = "Quiz hiện chưa bắt đầu!\nBạn cần bắt đầu làm trước khi auto!";
+    public static final String QUIZ_SOLUTION_ERROR = "Giải quiz thất bại.";
 
     public static final String WAIT_SOLUTION = "Đang giải bài...";
     public static final String PROCESS_SOLUTION = "Đang giải %d/%d câu hỏi...";
-    public static final String SUBMITTING = "Chờ hoàn thành...";
 
     public static final String HELLO = "Chào: ";
     public static final String ID = "Id: ";

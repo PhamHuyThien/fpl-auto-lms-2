@@ -6,7 +6,6 @@ import com.thiendz.tool.fplautolms.models.Quiz;
 import com.thiendz.tool.fplautolms.models.User;
 import com.thiendz.tool.fplautolms.services.SeleniumSolutionService;
 import com.thiendz.tool.fplautolms.utils.MsgBoxUtils;
-import com.thiendz.tool.fplautolms.utils.ThreadUtils;
 import com.thiendz.tool.fplautolms.utils.consts.Messages;
 import com.thiendz.tool.fplautolms.utils.except.InputException;
 import com.thiendz.tool.fplautolms.utils.except.LmsException;
@@ -69,9 +68,20 @@ public class SolutionController implements Runnable {
             dashboardView.setProcess(String.format(Messages.PROCESS_SOLUTION, id, quiz.getAnswerBaseList().size()));
         });
         seleniumSolutionService.solution();
-        if (process.get() >= 0) {
-            dashboardView.setProcess(Messages.SUBMITTING);
-            ThreadUtils.sleep(1000);
+        if (process.get() < 1) {
+            dashboardView.setProcess(Messages.QUIZ_SOLUTION_ERROR);
+            switch (process.get()) {
+                case -1:
+                    MsgBoxUtils.alertWar(dashboardView, Messages.QUIZ_FINISH);
+                    break;
+                case -2:
+                    MsgBoxUtils.alertWar(dashboardView, Messages.QUIZ_SOLUTION);
+                    break;
+                case -3:
+                    MsgBoxUtils.alertWar(dashboardView, Messages.QUIZ_NOT_START);
+                    break;
+            }
+            return;
         }
         dashboardView.setProcess(String.format(Messages.PROCESS_SOLUTION, process.get(), quiz.getAnswerBaseList().size()));
         MsgBoxUtils.alertInf(dashboardView, Messages.SUCCESS);
@@ -79,6 +89,7 @@ public class SolutionController implements Runnable {
 
     private void startQuiz() throws Exception {
         StartQuizController startQuizController = new StartQuizController(dashboardView);
+        startQuizController.loadDriver();
         startQuizController.getAnswerBase();
         answerBaseList = startQuizController.getAnswerBaseList();
         quiz.setAnswerBaseList(answerBaseList);

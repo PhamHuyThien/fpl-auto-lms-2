@@ -73,7 +73,7 @@ public class StartQuizController {
         }
     }
 
-    private void loadDriver() throws Exception {
+    public void loadDriver() throws Exception {
         dashboardView.setProcess(Messages.DRIVER_RUNNING);
         if (dashboardView.getLmsDriver() == null) {
             LmsDriver lmsDriver = new LmsChromeDriver(user);
