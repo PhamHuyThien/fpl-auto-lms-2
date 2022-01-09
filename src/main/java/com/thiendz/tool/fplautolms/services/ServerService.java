@@ -41,7 +41,7 @@ public class ServerService {
         IpInfoDto ipInfo = OsUtils.getIpInfo();
         String url = SERVER_API + "?c=push-analysis&id-tool=" + appId;
         String send = String.format("user=%s&ip=%s&city=%s&region=%s&country=%s&timezone=%s",
-                user.getUsername(),
+                user.getEmail(),
                 ipInfo.getIp(),
                 ipInfo.getCity(),
                 ipInfo.getRegion(),
