@@ -4,6 +4,7 @@ package com.thiendz.tool.fplautolms.views;
 import com.thiendz.tool.fplautolms.models.AnswerBase;
 import com.thiendz.tool.fplautolms.models.Quiz;
 import com.thiendz.tool.fplautolms.utils.MsgBoxUtils;
+import com.thiendz.tool.fplautolms.utils.StringUtils;
 import com.thiendz.tool.fplautolms.utils.consts.Messages;
 import lombok.Getter;
 import lombok.Setter;
@@ -266,13 +267,9 @@ public class AnswerView extends javax.swing.JFrame {
 
     private void onclickPrev() {
         int prev = getPageText() - 1;
-        if (prev == -2) {
-            MsgBoxUtils.alertErr(this, "Câu hỏi cần prev không hợp lệ!");
-            return;
-        }
         if (prev < 0 || prev >= getSizAnswerBase()) {
-            MsgBoxUtils.alertErr("Câu hỏi này không tồn tại!");
-            return;
+            prev = getSizAnswerBase();
+            tfPageNum.setText(prev + "");
         }
         if (prev <= 0) {
             prev = getSizAnswerBase();
@@ -282,13 +279,9 @@ public class AnswerView extends javax.swing.JFrame {
 
     private void onclickNext() {
         int next = getPageText() - 1;
-        if (next == -2) {
-            MsgBoxUtils.alertErr(this, "Câu hỏi cần next không hợp lệ!");
-            return;
-        }
         if (next < 0 || next >= getSizAnswerBase()) {
-            MsgBoxUtils.alertErr("Câu hỏi này không tồn tại!");
-            return;
+            tfPageNum.setText("0");
+            next = -1;
         }
         if (next >= getSizAnswerBase() - 1) {
             next = -1;
@@ -312,7 +305,7 @@ public class AnswerView extends javax.swing.JFrame {
         if (this.quiz == null) {
             return;
         }
-        setTitle(this.quiz.getName() + " - "+Messages.APP_NAME);
+        setTitle(this.quiz.getName() + " - " + Messages.APP_NAME);
         lbTitle.setText("<" + this.quiz.getName() + "/>");
         if (id > -1 && id < getSizAnswerBase()) {
             setPageText(id + 1);
@@ -321,7 +314,8 @@ public class AnswerView extends javax.swing.JFrame {
             List<Integer> bestSolutionList = quiz.getAnswerBaseList().get(id).getBestSolutionIdList();
             StringBuilder sb = new StringBuilder();
             for (Integer integer : bestSolutionList) {
-                sb.append("- ").append(quiz.getAnswerBaseList().get(id).getAnswerTextList().get(integer)).append("<br/>");
+                String answer = quiz.getAnswerBaseList().get(id).getAnswerTextList().get(integer);
+                sb.append("- ").append(StringUtils.tagHtmlToText(answer)).append("<br/>");
             }
             updateAnswer(sb.toString());
         }

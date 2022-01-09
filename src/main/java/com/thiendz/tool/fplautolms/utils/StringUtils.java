@@ -1,5 +1,7 @@
 package com.thiendz.tool.fplautolms.utils;
 
+import org.apache.commons.text.StringEscapeUtils;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.Normalizer;
@@ -9,6 +11,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringUtils {
+
+    public static String tagHtmlToText(String html){
+        return StringEscapeUtils.escapeHtml4(html);
+    }
 
     public static <T> List<T> regex(String regex, String input, Class<T> t) {
         Pattern pattern = Pattern.compile(regex);
