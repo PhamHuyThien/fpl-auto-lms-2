@@ -11,6 +11,18 @@ public class Messages {
     public static final String CONNECT_TO_SERVER_ERROR = "Kết nối tới máy chủ thất bại.";
     public static final String LINK_REF_ID_WRONG_FORMAT = "RefId không hợp lệ.";
     public static final String GET_LIST_QUIZ_SUCCESS = "Lấy danh sách quiz thành công.";
+    public static final String YOU_MUST_CHOOSE_ONE_QUIZ = "Bạn phải chọn một quiz.";
+    public static final String QUIZ_NOT_SUPPORT = "Quiz này không hỗ trợ!";
+    public static final String SUCCESS = "Hoàn thành.";
+    public static final String GET_LIST_QUESTION = "Lấy danh sách câu hỏi...";
+    public static final String GET_LIST_ANSWER = "Lấy danh sách đáp án...";
+    public static final String QUIZ_NOT_START_OR_EXPIRED = "Quiz chưa được bắt đầu hoặc hết hạn.";
+    public static final String START_SOLUTION = "Bắt đầu làm bài...";
+    public static final String NOT_START_SOLUTION = "Không thể bắt đầu làm bài, có thể bài này đã được làm rồi.";
+    public static final String DRIVER_RUNNING = "Khởi động driver...";
+    public static final String DRIVER_NOT_INSTALL_HOW_TO_INSTALL = "Hiện tại bạn chưa cài đặt driver.\nBạn muốn tự động cài driver chứ?";
+    public static final String DRIVER_NOT_INSTALL = "Driver chưa được cài đặt.";
+    public static final String DRIVER_DOWNLOADING = "Bắt đầu tải về driver...";
 
     public static final String HELLO = "Chào: ";
     public static final String ID = "Id: ";

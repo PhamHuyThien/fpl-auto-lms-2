@@ -4,11 +4,13 @@ import com.thiendz.tool.fplautolms.controllers.*;
 import com.thiendz.tool.fplautolms.models.User;
 import com.thiendz.tool.fplautolms.selenium.interf.LmsDriver;
 import com.thiendz.tool.fplautolms.utils.consts.Messages;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.awt.*;
 
-@Data
+@Getter
+@Setter
 public class DashboardView extends javax.swing.JFrame {
 
     LmsDriver lmsDriver;

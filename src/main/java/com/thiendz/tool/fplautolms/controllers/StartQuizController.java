@@ -13,6 +13,7 @@ import com.thiendz.tool.fplautolms.services.AnswerBaseService;
 import com.thiendz.tool.fplautolms.services.SeleniumStartQuizService;
 import com.thiendz.tool.fplautolms.utils.MsgBoxUtils;
 import com.thiendz.tool.fplautolms.utils.OsUtils;
+import com.thiendz.tool.fplautolms.utils.consts.Messages;
 import com.thiendz.tool.fplautolms.utils.except.LmsException;
 import com.thiendz.tool.fplautolms.views.DashboardView;
 import lombok.extern.slf4j.Slf4j;
@@ -42,7 +43,7 @@ public class StartQuizController {
     }
 
     public void getAnswerBase() throws Exception {
-        dashboardView.setProcess("Lấy danh sách câu hỏi...");
+        dashboardView.setProcess(Messages.GET_LIST_QUESTION);
         AnswerBaseService answerBaseService = new AnswerBaseService(user, quiz);
         do {
             try {
@@ -53,27 +54,27 @@ public class StartQuizController {
                     loadDriver();
                     startQuiz();
                 } else
-                    throw new LmsException("Quiz chưa được bắt đầu hoặc hết hạn.");
+                    throw new LmsException(Messages.QUIZ_NOT_START_OR_EXPIRED);
             }
         } while (true);
-        dashboardView.setProcess("Lấy danh sách đáp án...");
+        dashboardView.setProcess(Messages.GET_LIST_ANSWER);
         answerBaseService.getAnswerBaseValue();
         answerBaseList = answerBaseService.getAnswerBaseList();
     }
 
     private void startQuiz() throws LmsException {
-        dashboardView.setProcess("Bắt đầu làm bài...");
+        dashboardView.setProcess(Messages.START_SOLUTION);
         SeleniumStartQuizService seleniumStartQuizService = new SeleniumStartQuizService(dashboardView.getLmsDriver().getWebDriver(), user, quiz);
         try {
             seleniumStartQuizService.start();
         } catch (LmsException e) {
             log.error(e.toString());
-            throw new LmsException("Không thể bắt đầu làm bài, có thể bài này đã được làm rồi.");
+            throw new LmsException(Messages.NOT_START_SOLUTION);
         }
     }
 
     private void loadDriver() throws Exception {
-        dashboardView.setProcess("Khởi động driver...");
+        dashboardView.setProcess(Messages.DRIVER_RUNNING);
         if (dashboardView.getLmsDriver() == null) {
             LmsDriver lmsDriver = new LmsChromeDriver(user);
             do {
@@ -81,11 +82,11 @@ public class StartQuizController {
                     lmsDriver.init();
                     dashboardView.setLmsDriver(lmsDriver);
                 } catch (FileNotFoundException e) {
-                    if (MsgBoxUtils.confirmWar(dashboardView, "Hiện tại bạn chưa cài đặt driver.\nBạn muốn tự động cài driver chứ?")) {
+                    if (MsgBoxUtils.confirmWar(dashboardView, Messages.DRIVER_NOT_INSTALL_HOW_TO_INSTALL)) {
                         downloadDriver();
                         continue;
                     } else
-                        throw new LmsException("Driver chưa được cài đặt.");
+                        throw new LmsException(Messages.DRIVER_NOT_INSTALL);
                 }
                 break;
             } while (true);
@@ -93,7 +94,7 @@ public class StartQuizController {
     }
 
     private void downloadDriver() throws Exception {
-        dashboardView.setProcess("Bắt đầu tải về driver...");
+        dashboardView.setProcess(Messages.DRIVER_DOWNLOADING);
         String path = OsUtils.getScriptDir() + "\\driver";
         SeleniumDriverDL seleniumDriverDL = new SeleniumChromeDriverDL();
         seleniumDriverDL.setPathSave(path);

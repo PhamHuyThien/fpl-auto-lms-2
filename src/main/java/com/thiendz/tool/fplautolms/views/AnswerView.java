@@ -5,7 +5,8 @@ import com.thiendz.tool.fplautolms.models.AnswerBase;
 import com.thiendz.tool.fplautolms.models.Quiz;
 import com.thiendz.tool.fplautolms.utils.MsgBoxUtils;
 import com.thiendz.tool.fplautolms.utils.consts.Messages;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -13,7 +14,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 public class AnswerView extends javax.swing.JFrame {
 
     public static void main(String[] args) {

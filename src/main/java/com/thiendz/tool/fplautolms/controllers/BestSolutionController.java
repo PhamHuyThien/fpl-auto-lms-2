@@ -4,6 +4,7 @@ import com.thiendz.tool.fplautolms.models.AnswerBase;
 import com.thiendz.tool.fplautolms.models.Course;
 import com.thiendz.tool.fplautolms.models.Quiz;
 import com.thiendz.tool.fplautolms.models.User;
+import com.thiendz.tool.fplautolms.utils.consts.Messages;
 import com.thiendz.tool.fplautolms.utils.except.InputException;
 import com.thiendz.tool.fplautolms.views.AnswerView;
 import com.thiendz.tool.fplautolms.views.DashboardView;
@@ -50,7 +51,7 @@ public class BestSolutionController implements Runnable {
             updateAnswer();
         } catch (IOException e) {
             log.error(e.toString());
-            dashboardView.setProcess("Không thể kết nối tới máy chủ.");
+            dashboardView.setProcess(Messages.CONNECT_TO_SERVER_ERROR);
         } catch (Exception e) {
             log.error(e.toString());
             dashboardView.setProcess(e.toString());
@@ -61,11 +62,11 @@ public class BestSolutionController implements Runnable {
 
     private void checkComboBoxQuiz() throws InputException {
         if (quizId < 0)
-            throw new InputException("Bạn phải chọn 1 quiz!");
+            throw new InputException(Messages.YOU_MUST_CHOOSE_ONE_QUIZ);
 
         String text = Objects.requireNonNull(dashboardView.getCbbQuiz().getSelectedItem()).toString();
-        if (text.contains("(NOT SUPPORT)"))
-            throw new InputException("Quiz này không hỗ trợ!");
+        if (text.contains(Messages.NOT_SUPPORT))
+            throw new InputException(Messages.QUIZ_NOT_SUPPORT);
     }
 
     private void updateDashboard() {
@@ -75,13 +76,12 @@ public class BestSolutionController implements Runnable {
             user.setCourse(course);
             dashboardView.setUser(user);
         }
-        dashboardView.setProcess("Hoàn thành.");
+        dashboardView.setProcess(Messages.SUCCESS);
     }
 
     private void updateAnswer() {
-        if (dashboardView.getAnswerView() == null) {
+        if (dashboardView.getAnswerView() == null)
             dashboardView.setAnswerView(new AnswerView());
-        }
         dashboardView.getAnswerView().setDashboardView(dashboardView);
         dashboardView.getAnswerView().setQuiz(quiz);
         dashboardView.getAnswerView().updateComponent();
