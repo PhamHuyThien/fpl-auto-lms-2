@@ -1,0 +1,15 @@
+22-01-2022 13:31:24.472 [main] INFO c.t.t.f.services.ServerService.init : Request POST: https://poly.11x7.xyz/api/index.php?c=get-tool-info
+22-01-2022 13:31:24.476 [main] INFO c.t.t.f.services.ServerService.init : Request send: name=FPL@utoLMS
+22-01-2022 13:31:24.476 [main] INFO c.t.t.f.services.ServerService.init : Response: {"status":1,"msg":"get tool info success!","data":{"id":"2","name":"fpl@utolms","version":"2.0.0","status":"1","time":"0"}}
+22-01-2022 13:31:32.658 [main] INFO c.t.t.f.services.ServerService.init : Request POST: https://poly.11x7.xyz/api/index.php?c=get-tool-info
+22-01-2022 13:31:32.661 [main] INFO c.t.t.f.services.ServerService.init : Request send: name=FPL@utoLMS
+22-01-2022 13:31:32.661 [main] INFO c.t.t.f.services.ServerService.init : Response: {"status":1,"msg":"get tool info success!","data":{"id":"2","name":"fpl@utolms","version":"2.0.0","status":"1","time":"0"}}
+22-01-2022 13:32:48.324 [main] INFO c.t.t.f.services.ServerService.init : Request POST: https://poly.11x7.xyz/api/index.php?c=get-tool-info
+22-01-2022 13:32:48.327 [main] INFO c.t.t.f.services.ServerService.init : Request send: name=FPL@utoLMS
+22-01-2022 13:32:48.327 [main] INFO c.t.t.f.services.ServerService.init : Response: {"status":1,"msg":"get tool info success!","data":{"id":"2","name":"fpl@utolms","version":"2.0.0","status":"1","time":"0"}}
+22-01-2022 13:33:45.728 [main] INFO c.t.t.f.services.ServerService.init : Request POST: https://poly.11x7.xyz/api/index.php?c=get-tool-info
+22-01-2022 13:33:45.731 [main] INFO c.t.t.f.services.ServerService.init : Request send: name=FPL@utoLMS
+22-01-2022 13:33:45.731 [main] INFO c.t.t.f.services.ServerService.init : Response: {"status":1,"msg":"get tool info success!","data":{"id":"2","name":"fpl@utolms","version":"2.0.0","status":"1","time":"0"}}
+22-01-2022 13:34:14.120 [main] INFO c.t.t.f.services.ServerService.init : Request POST: https://poly.11x7.xyz/api/index.php?c=get-tool-info
+22-01-2022 13:34:14.123 [main] INFO c.t.t.f.services.ServerService.init : Request send: name=FPL@utoLMS
+22-01-2022 13:34:14.123 [main] INFO c.t.t.f.services.ServerService.init : Response: {"status":1,"msg":"get tool info success!","data":{"id":"2","name":"fpl@utolms","version":"2.0.0","status":"1","time":"0"}}

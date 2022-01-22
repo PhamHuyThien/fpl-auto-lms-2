@@ -6,7 +6,7 @@
 
     <groupId>com.thiendz.tool</groupId>
     <artifactId>fpl-auto-lms-2</artifactId>
-    <version>1.0.0</version>
+    <version>2.0.1</version>
     <dependencies>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -42,7 +42,7 @@
         <dependency>
             <groupId>com.thiendz.lib</groupId>
             <artifactId>driver-dl</artifactId>
-            <version>2.0.0</version>
+            <version>2.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>

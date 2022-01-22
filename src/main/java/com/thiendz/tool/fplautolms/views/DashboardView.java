@@ -158,7 +158,7 @@ public class DashboardView extends javax.swing.JFrame {
         lbEmail.setText(Messages.EMAIL + "..............");
 
         lbHello.setFont(new java.awt.Font("Consolas", Font.PLAIN, 12)); // NOI18N
-        lbHello.setText(Messages.HELLO + ":................");
+        lbHello.setText(Messages.HELLO + "................");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
