@@ -63,22 +63,18 @@ Tắt tính năng theo dõi người dùng:
 ```
 
 ### Cách sử dụng args
-Khởi động ứng dụng bằng lệnh CMD:  
+
+Khởi động ứng dụng bằng lệnh CMD:
+
 ```cmd
 java -jar FPLautoLms_v2.jar -sb -fs -si
 ```
 
-## Lưu ý
-
-Ví dụ: khởi động ứng dụng bằng CMD trên hệ điều hành window:
-
-```cmd
-java -jar FPLautoLms.jar --disable-analysis
-```
-
 ## Lưu ý:
 
-Để cải thiện mặc định chúng tôi theo dõi người dùng, để tắt tính năng này hãy sử dụng `--disable-analysis`.
+Để cải thiện sản phẩm mặc định chúng tôi theo dõi người dùng.  
+Để tắt tính năng này hãy sử dụng `--disable-analysis`.  
+Nếu tắt tính năng theo dõi người dùng đồng nghĩa với việc sẽ mất kết nối hoàn toàn tới server (bao gồm các chức năng mở rộng hỗ trợ đính kèm sẽ không được hỗ trợ).
 
 ## Cộng đồng
 
