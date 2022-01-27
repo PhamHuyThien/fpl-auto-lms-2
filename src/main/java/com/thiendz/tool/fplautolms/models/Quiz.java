@@ -17,6 +17,7 @@ import java.util.List;
 public class Quiz implements Comparable<Quiz> {
 
     private int id;
+    private int timeRemaining;
     private String name;
     private boolean automationSupport;
     private QuizState quizState;

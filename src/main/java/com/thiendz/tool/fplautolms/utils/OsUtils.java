@@ -32,7 +32,7 @@ public class OsUtils {
                 case "--show-browser":
                     Environments.SHOW_BROWSER = true;
                     break;
-                case "-fsc":
+                case "-fs":
                 case "--full-screen":
                     Environments.FULL_SCREEN = true;
                     break;

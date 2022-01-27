@@ -26,31 +26,59 @@ có tên [driver-dl](https://github.com/PhamHuyThien/driver-dl).
 <dependency>
     <groupId>com.thiendz.lib</groupId>
     <artifactId>driver-dl</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
 </dependency>
 ```
 
-### Danh sách args debug selenium
+### Danh sách args
 
-Hiện thị trình duyệt: `-sb` hoặc `--show-browser`  
-Bật full màn hình trình duyệt: `-fsc` hoặc `--full-screen`  
-Bật hiển thị hình ảnh: `-si` hoặc `--show-image`  
-Bật chế độ automation driver: `-ea` hoặc `--enable-automation`  
-Ví dụ:
+Hiện thị trình duyệt:
 
 ```cmd
-java -jar FPLautoLms_v2.jar -sb -fsc -si
+--show-browser
+```  
+
+Bật full màn hình trình duyệt:
+
+```cmd
+--full-screen
+```
+
+Bật hiển thị hình ảnh:
+
+```cmd
+--show-image
+```
+
+Bật chế độ automation driver:
+
+```cmd
+--enable-automation
+```
+
+Tắt tính năng theo dõi người dùng:
+
+```cmd
+--disable-analysis
+```
+
+### Cách sử dụng args
+Khởi động ứng dụng bằng lệnh CMD:  
+```cmd
+java -jar FPLautoLms_v2.jar -sb -fs -si
 ```
 
 ## Lưu ý
 
-Để cải thiện sản phẩm, mặc định chúng tôi thu thập dữ liệu người dùng.  
-Để tắt tính năng này vui lòng thêm args `-d` hoặc `--disable-analysis` khi khởi động ứng dụng.  
-Ví du: khởi động ứng dụng bằng CMD trên hệ điều hành window:
+Ví dụ: khởi động ứng dụng bằng CMD trên hệ điều hành window:
 
 ```cmd
 java -jar FPLautoLms.jar --disable-analysis
 ```
+
+## Lưu ý:
+
+Để cải thiện mặc định chúng tôi theo dõi người dùng, để tắt tính năng này hãy sử dụng `--disable-analysis`.
 
 ## Cộng đồng
 
