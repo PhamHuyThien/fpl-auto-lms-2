@@ -1,0 +1,1 @@
+java -jar fpl-auto-lms-2.jar
