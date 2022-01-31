@@ -20,6 +20,7 @@ target/
 *.ipr
 /out
 /driver/*.exe
+/logs/
 
 ### NetBeans ###
 /nbproject/private/
