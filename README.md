@@ -52,6 +52,12 @@ Ví du: khởi động ứng dụng bằng CMD trên hệ điều hành window:
 java -jar FPLautoLms.jar --disable-analysis
 ```
 
+## Lich sử thay đổi
+
+Lịch sử thay đổi qua từng phiên bản được đề cập
+trong [change-log.md](https://github.com/PhamHuyThien/fpl-auto-lms-2/blob/master/change-log.md).
+
+
 ## Cộng đồng
 
 Chúng tôi luôn tìm kiếm những người đóng góp, bạn có thể đóng góp, thắc mắc:

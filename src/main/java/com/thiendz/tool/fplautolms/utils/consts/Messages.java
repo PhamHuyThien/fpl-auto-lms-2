@@ -43,7 +43,7 @@ public class Messages {
     public static final String NOT_SUPPORT = "(NOT SUPPORT)";
 
     public static final String APP_NAME = "FPL@utoLMS";
-    public static final String APP_VER = "2.0.0";
+    public static final String APP_VER = "2.0.1";
     public static final String APP_SLOGAN = "10 Quiz 10 Point Easy!";
     public static final String APP_AUTHOR = "ThienDZaii";
     public static final String APP_NICKNAME = "SystemError";
